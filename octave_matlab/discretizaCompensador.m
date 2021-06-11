@@ -1,0 +1,2 @@
+function [Gz a b] = discretizaCompensador(Gc,T)  Gz = c2d(Gc,T,'zoh');  a = Gz.den{1};  b = Gz.num{1};  abs(pole(Gz))  acfunc =  sprintf("%f,",a);  a =['{ ' acfunc(1:length(acfunc)-1) '}'];  bcfunc =  sprintf("%f,",b);  b = ['{ ' bcfunc(1:length(bcfunc)-1) '}'];
+ end
