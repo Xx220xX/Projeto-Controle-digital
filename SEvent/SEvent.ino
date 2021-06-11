@@ -1,19 +1,16 @@
 
 #define Ny 3
 #define Nx 3
-
 class {
   public:
     int GPIO_entrada = 0;
-    int GPIO_saida = 5;// 3, 5, 6, 9, 10 and 11 esses possui pwm,The frequency of PWM signal on pins 5 and 6 will be about 980Hz and on other pins will be 490Hz
-
+    int GPIO_saida = 5;
     int ts = 10;//tempo de amostragem em milissegundos
     double a[Ny] = {1.000000,-1.941765,0.941765}; // deve ser da forma a0 + a1 z^-1 + a2 z^-2
     double b[Nx] ={ 0.241604,-0.372311,0.131495}; // deve ser da forma b0 + b1 z^-1 + b2 z^-2
     double y[Ny] = {0}, x[Nx] = {0};
     double minIn = -20, maxIn = 20, minO = -10, maxO = 10;
     double target = 0;
-    int bitsincronise = 0;
     void setup() {
       pinMode(GPIO_saida, OUTPUT);
       analogWrite(GPIO_saida, 0);
